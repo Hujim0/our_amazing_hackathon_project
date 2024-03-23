@@ -5,12 +5,17 @@ flask_app = Flask(__name__)
 
 
 @flask_app.route('/')
-def hello_world():
+def main_page():
     return open('index.html', encoding='utf8').read()
+
+@flask_app.route('/request')
+def request():
+    return open('hello.html', encoding='utf8').read()
+
 
 def client_ready(*_):
     print(_)
-    flask_app.run(host='0.0.0.0')
+    flask_app.run(host='0.0.0.0', port=80)
     print('running')
 
 
